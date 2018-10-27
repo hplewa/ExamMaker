@@ -1,5 +1,6 @@
 import java.util.Collections;
 import java.util.List;
+import java.util.ArrayList;
 
 //The Exam class represents a gradable collection of Questions
 public class Exam {
@@ -43,6 +44,4 @@ public class Exam {
     }
     return overallValue;
   }
-
-
 };

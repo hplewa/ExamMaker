@@ -1,5 +1,7 @@
 import java.util.Collections;
 import java.util.List;
+import java.util.ArrayList;
+
 
 //The Question class represents a textual multiple-choice question
 public class Question{
@@ -19,19 +21,19 @@ public class Question{
 
   //print( int position ) : void – Prints the question to the screen, along with all of its answers. The input parameter indicates the position of this question in the list of questions, 1 for the first question, 2 for the second, and so on.
   public void print(int position){
-    System.out.println(quesiton);
+    System.out.println(question);
     for(Answer a: answers){
       a.print(position);
     }
   }
 
   //selectAnswer( int position ) : void – selects the Answer in the given position. This may or may not require unselecting other previously selected Answers.
-  public selectAnswer(int position){
+  public void selectAnswer(int position){
     answers.get(position).setSelected(true);
   }
 
   //unselectAnswer( int position ) : void – unselects the Answer in the given position.
-  public unselectAnswer(int position){
+  public void unselectAnswer(int position){
     answers.get(position).setSelected(false);
   }
 
