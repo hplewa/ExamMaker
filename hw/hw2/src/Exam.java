@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 //The Exam class represents a gradable collection of Questions
 public class Exam {
-  private String title;
-  private List<Question> questions;
+  private String text;
+  private ArrayList<Question> questions;
 
   //Exam( String ) – A constructor for creating the Exam object. New Exams do not have Questions until they are added. The input parameter is the title / header of the exam, to be printed before the questions. ( Note that the title / header may consist of multiple lines. )
   public Exam(String s){
-    title = s;
+    text = s;
     questions = new ArrayList<Question> ();
   }
 
@@ -22,13 +22,8 @@ public class Exam {
   public void print(){
     System.out.println(title);
     for(Question q: questions){
-      q.print(0);
+      q.print();
     }
-  }
-
-  // getQuestion( int position ) : Question – returns ( a reference to ) the question in the given position within the exam.
-  public Question getQuestion(int position){
-    return questions.get(position);
   }
 
   // reorderQuestions( void ) : void – Randomly reorders the Questions within the Exam.
@@ -36,7 +31,22 @@ public class Exam {
     Collections.shuffle(questions);
   }
 
-  // getValue( void ) : double – Get the overall value ( score ) of the exam. This method should work regardless of how many ( if any ) of the Questions have been answered.
+  //reorderMCAnswers( position : int ) : void – For multiple choice questions only, this method reorders the answers of the question. If the position parameter is negative, then all MC questions get their answers reordered. Otherwise the position indicates which Question should have its answers reordered, provided that that Question is a MC type question.
+  public void reorderMCAnswers(int position){
+      if(position < 0){
+          for(MCQuestion q: questions){
+              q.reorderAnswers();
+          }
+      }
+      else{
+          questions[i].reorderAnswers();
+      }
+  }
+
+  //getAnswerFromStudent( position : int ) : void – See previous explanation of “position”.
+  public void getAnswerFromStudent(int position){ }
+
+  //getValue( void ) : double – Get the overall value ( score ) of the exam. This method should work regardless of how many ( if any ) of the Questions have been answered.
   public double getValue(){
     double overallValue = 0.0;
     for(Question q: questions){
@@ -44,4 +54,7 @@ public class Exam {
     }
     return overallValue;
   }
+
+  //reportQuestionValues( ) : void – This method produces a table of the values of each Question on the Exam, and the total.
+  public void reportQuestionValues(){ }
 };
